@@ -29,6 +29,7 @@ jobs:
           echo "WIN_UPDATE=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/update.txt" >> $GITHUB_ENV
           echo "WIN_EXTRA=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/extra.txt" >> $GITHUB_ENV
           echo "TRACKERS_LIST=https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt" >> $GITHUB_ENV
+          echo "ANIME_TRACKERS_LIST=https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt" >> $GITHUB_ENV
         shell: bash
 
       - name: Checkout the "hidden" branch of this repo
@@ -165,7 +166,7 @@ jobs:
 
       - name: Add x-bt-trackers
         run: |
-          curl -sSL $TRACKERS_LIST | ./format_trackers.sh > ./community/data/x-bt-trackers
+          { curl -sSL $TRACKERS_LIST | ./format_trackers.sh; curl -sSL $ANIME_TRACKERS_LIST | ./format_trackers.sh } | sort | uniq > ./community/data/x-bt-trackers
 
       - name: Build geosite.dat file
         run: |
