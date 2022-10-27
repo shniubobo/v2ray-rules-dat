@@ -168,7 +168,7 @@ jobs:
 
       - name: Add x-bt-trackers
         run: |
-          { curl -sSL $TRACKERS_LIST | ./format_trackers.sh; curl -sSL $ANIME_TRACKERS_LIST | ./format_trackers.sh } | sort | uniq > ./community/data/x-bt-trackers
+          { curl -sSL $TRACKERS_LIST | ./format_trackers.sh; curl -sSL $ANIME_TRACKERS_LIST | ./format_trackers.sh; } | sort | uniq > ./community/data/x-bt-trackers
 
       - name: Build geosite.dat file
         run: |
