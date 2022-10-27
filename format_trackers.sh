@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-regex='^[a-z]+:\/\/(.+):[0-9]+\/announce$'
+regex='^[a-z]+:\/\/([^:\/]+)(:[0-9]+)?\/.*$'
 
 format() {
     if [[ "$1" =~ $regex ]]; then
